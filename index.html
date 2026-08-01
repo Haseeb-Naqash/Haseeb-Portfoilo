@@ -4,6 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <title>Haseeb Naqash</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -52,6 +59,11 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <i class="bi bi-sun-fill theme-icon-light"></i>
+        <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+      </button>
+
       <a class="btn-getstarted" href="https://wa.me/923216704217">Get Started</a>
 
     </div>
@@ -60,9 +72,14 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+    <section id="hero" class="hero section">
 
-      <img src="assets/img/profile/profile-bg-5.webp" alt="" data-aos="fade-in">
+      <div class="hero-bg-animation" aria-hidden="true" data-aos="fade-in">
+        <canvas class="hero-canvas"></canvas>
+        <div class="code-grid"></div>
+        <div class="hero-particles"></div>
+        <div class="hero-fade-bottom"></div>
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row justify-content-center">
@@ -307,9 +324,9 @@
                     <div class="period-badge">Current</div>
                   </div>
                   <div class="card-body">
-                    <h3>Data Science Intern</h3>
+                    <h3>Software Engineer Intern</h3>
                     <p class="company-name">Programmer Force</p>
-                    <span class="duration">08-01-2026 - Present</span>
+                    <span class="duration">08-01-2026 - 08-06-2026</span>
                     <p class="description">Worked on machine learning models, NLP tasks, and RAG pipelines to build
                       intelligent, data-driven solutions.</p>
                     <div class="skills-tags">
@@ -491,7 +508,7 @@
         <div class="services-desktop d-none d-md-block">
           <div class="row gy-4 mb-4">
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="service-item featured h-100">
+              <a href="Services/development.html" class="service-item featured h-100">
                 <div class="featured-tag">Featured</div>
                 <div class="icon-wrapper">
                   <i class="bi-code-slash"></i>
@@ -500,15 +517,15 @@
                 <p>Custom web development & Software development with latest technologies for fast, SEO-friendly
                   business
                   websites</p>
-                <a href="Services/development.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="service-item h-100">
+              <a href="Services/ai-machine-learning.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-robot"></i>
                 </div>
@@ -516,30 +533,30 @@
                 <p>Developing smart, data-driven solutions including predictive models, Neural Networks, and RAG
                   pipelines
                   to solve complex business problems</p>
-                <a href="Services/ai-machine-learning.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="service-item h-100">
+              <a href="Services/data-analytics.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-graph-up-arrow"></i>
                 </div>
                 <h4>Data Analytics & Insights</h4>
                 <p>Leveraging Python, Pandas, and Machine Learning to transform raw datasets into actionable business
                   intelligence through predictive modeling and automated reporting.</p>
-                <a href="Services/data-analytics.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="service-item h-100">
+              <a href="Services/shopify-wordpress.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-wordpress"></i>
                 </div>
@@ -547,70 +564,70 @@
                 <p>Expert setup and customization of high-converting Shopify stores and specialized WordPress solutions
                   for
                   businesses.</p>
-                <a href="Services/shopify-wordpress.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
           </div>
 
           <div class="row gy-4">
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
-              <div class="service-item h-100">
+              <a href="Services/brand-identity.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-palette"></i>
                 </div>
                 <h4>Brand Identity</h4>
                 <p>Creating professional product packaging, social media creatives, and website visuals to strengthen
                   digital brand identity.</p>
-                <a href="Services/brand-identity.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="600">
-              <div class="service-item h-100">
+              <a href="Services/ui-ux-design.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-layout-text-window-reverse"></i>
                 </div>
                 <h4>UI/UX Design</h4>
                 <p>User-centric interface design that boosts engagement and conversions for digital products</p>
-                <a href="Services/ui-ux-design.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="700">
-              <div class="service-item h-100">
+              <a href="Services/digital-marketing.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-megaphone"></i>
                 </div>
                 <h4>Digital Marketing</h4>
                 <p>Data-driven marketing campaigns across Google, Meta and Linkedin to maximize your ROL</p>
-                <a href="Services/digital-marketing.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="800">
-              <div class="service-item h-100">
+              <a href="Services/seo-services.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-search"></i>
                 </div>
                 <h4>SEO Services</h4>
                 <p>Comprehensive SEO strategies to improve rankings and drive organic traffic to your site.</p>
-                <a href="Services/seo-services.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
           </div>
         </div>
@@ -636,7 +653,7 @@
           <div class="swiper-wrapper">
 
             <div class="swiper-slide">
-              <div class="service-item featured h-100">
+              <a href="Services/development.html" class="service-item featured h-100">
                 <div class="featured-tag">Featured</div>
                 <div class="icon-wrapper">
                   <i class="bi-code-slash"></i>
@@ -645,15 +662,15 @@
                 <p>Custom web development & Software development with latest technologies for fast, SEO-friendly
                   business
                   websites</p>
-                <a href="Services/development.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/ai-machine-learning.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-robot"></i>
                 </div>
@@ -661,30 +678,30 @@
                 <p>Developing smart, data-driven solutions including predictive models, Neural Networks, and RAG
                   pipelines
                   to solve complex business problems</p>
-                <a href="Services/ai-machine-learning.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/data-analytics.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-graph-up-arrow"></i>
                 </div>
                 <h4>Data Analytics & Insights</h4>
                 <p>Leveraging Python, Pandas, and Machine Learning to transform raw datasets into actionable business
                   intelligence through predictive modeling and automated reporting.</p>
-                <a href="Services/data-analytics.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/shopify-wordpress.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-wordpress"></i>
                 </div>
@@ -692,68 +709,68 @@
                 <p>Expert setup and customization of high-converting Shopify stores and specialized WordPress solutions
                   for
                   businesses.</p>
-                <a href="Services/shopify-wordpress.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/brand-identity.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-palette"></i>
                 </div>
                 <h4>Brand Identity</h4>
                 <p>Creating professional product packaging, social media creatives, and website visuals to strengthen
                   digital brand identity.</p>
-                <a href="Services/brand-identity.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/ui-ux-design.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-layout-text-window-reverse"></i>
                 </div>
                 <h4>UI/UX Design</h4>
                 <p>User-centric interface design that boosts engagement and conversions for digital products</p>
-                <a href="Services/ui-ux-design.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/digital-marketing.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-megaphone"></i>
                 </div>
                 <h4>Digital Marketing</h4>
                 <p>Data-driven marketing campaigns across Google, Meta and Linkedin to maximize your ROL</p>
-                <a href="Services/digital-marketing.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
             <div class="swiper-slide">
-              <div class="service-item h-100">
+              <a href="Services/seo-services.html" class="service-item h-100">
                 <div class="icon-wrapper">
                   <i class="bi bi-search"></i>
                 </div>
                 <h4>SEO Services</h4>
                 <p>Comprehensive SEO strategies to improve rankings and drive organic traffic to your site.</p>
-                <a href="Services/seo-services.html" class="read-more">
+                <span class="read-more">
                   <span>Explore</span>
                   <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
+                </span>
+              </a>
             </div><!-- End Service Item -->
 
           </div>
@@ -800,6 +817,7 @@
             <li data-filter="*" class="filter-active">All Work</li>
             <li data-filter=".filter-development">Development</li>
             <li data-filter=".filter-ai">AI & Machine Learning</li>
+            <li data-filter=".filter-graphic">Graphic Design</li>
             <li data-filter=".filter-digital">Digital Marketing</li>
             <li data-filter=".filter-seo">SEO</li>
           </ul>
@@ -1050,6 +1068,96 @@
                     <span class="tag">WooCommerce</span>
                   </div>
                   <div class="project-year">2026</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-graphic filter-digital">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/img/portfolio/lorena-branding.svg" alt="Graphic Design Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">Brand Identity & Packaging</span>
+                      <h4>Lorena Organics — Brand & Packaging</h4>
+                    </div>
+                    <div class="portfolio-actions">
+                      <a href="assets/img/portfolio/lorena-branding.svg" class="glightbox portfolio-link">
+                        <i class="bi bi-plus-lg"></i>
+                      </a>
+                      <a href="https://lorenaorganics.com/" class="portfolio-details">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Packaging</span>
+                    <span class="tag">Social Media</span>
+                  </div>
+                  <div class="project-year">2024</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-graphic">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/img/portfolio/arvion-parfum.svg" alt="Graphic Design Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">Perfume Packaging & Label Design</span>
+                      <h4>Arvion Parfum — Brand & Packaging</h4>
+                    </div>
+                    <div class="portfolio-actions">
+                      <a href="assets/img/portfolio/arvion-parfum.svg" class="glightbox portfolio-link">
+                        <i class="bi bi-plus-lg"></i>
+                      </a>
+                      <a href="#" class="portfolio-details">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Packaging</span>
+                    <span class="tag">Branding</span>
+                  </div>
+                  <div class="project-year">2025</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-graphic filter-digital">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/img/portfolio/meezab-education.svg" alt="Graphic Design Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">Education Brand & Social Media</span>
+                      <h4>Meezab Education — Brand Identity</h4>
+                    </div>
+                    <div class="portfolio-actions">
+                      <a href="assets/img/portfolio/meezab-education.svg" class="glightbox portfolio-link">
+                        <i class="bi bi-plus-lg"></i>
+                      </a>
+                      <a href="#" class="portfolio-details">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Branding</span>
+                  </div>
+                  <div class="project-year">2025</div>
                 </div>
               </div>
             </div>
@@ -1326,6 +1434,96 @@
               </div>
             </div>
 
+            <div class="swiper-slide portfolio-item">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/img/portfolio/lorena-branding.svg" alt="Graphic Design Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">Brand Identity & Packaging</span>
+                      <h4>Lorena Organics — Brand & Packaging</h4>
+                    </div>
+                    <div class="portfolio-actions">
+                      <a href="assets/img/portfolio/lorena-branding.svg" class="glightbox portfolio-link">
+                        <i class="bi bi-plus-lg"></i>
+                      </a>
+                      <a href="https://lorenaorganics.com/" class="portfolio-details">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Packaging</span>
+                    <span class="tag">Social Media</span>
+                  </div>
+                  <div class="project-year">2024</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide portfolio-item">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/img/portfolio/arvion-parfum.svg" alt="Graphic Design Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">Perfume Packaging & Label Design</span>
+                      <h4>Arvion Parfum — Brand & Packaging</h4>
+                    </div>
+                    <div class="portfolio-actions">
+                      <a href="assets/img/portfolio/arvion-parfum.svg" class="glightbox portfolio-link">
+                        <i class="bi bi-plus-lg"></i>
+                      </a>
+                      <a href="#" class="portfolio-details">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Packaging</span>
+                    <span class="tag">Branding</span>
+                  </div>
+                  <div class="project-year">2025</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide portfolio-item">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/img/portfolio/meezab-education.svg" alt="Graphic Design Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">Education Brand & Social Media</span>
+                      <h4>Meezab Education — Brand Identity</h4>
+                    </div>
+                    <div class="portfolio-actions">
+                      <a href="assets/img/portfolio/meezab-education.svg" class="glightbox portfolio-link">
+                        <i class="bi bi-plus-lg"></i>
+                      </a>
+                      <a href="#" class="portfolio-details">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Branding</span>
+                  </div>
+                  <div class="project-year">2025</div>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -1505,6 +1703,7 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

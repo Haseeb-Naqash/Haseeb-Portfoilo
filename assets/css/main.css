@@ -57,6 +57,19 @@
   --contrast-color: #ffffff;
 }
 
+/* Light Theme - Toggled at runtime via [data-theme="light"] on <html>. */
+:root[data-theme="light"] {
+  --background-color: #f7f7f8;
+  --default-color: #3c3c3c;
+  --heading-color: #141414;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #3c3c3c;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #3c3c3c;
+}
+
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
@@ -189,19 +202,54 @@ h6 {
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
+.header .theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  border: none;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--nav-color), transparent 90%);
+  color: var(--nav-color);
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+
+.header .theme-toggle:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+:root[data-theme="dark"] .header .theme-toggle .theme-icon-dark {
+  display: none;
+}
+
+:root[data-theme="light"] .header .theme-toggle .theme-icon-light {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
   }
 
-  .header .btn-getstarted {
+  .header .theme-toggle {
     order: 2;
+    margin: 0 10px;
+  }
+
+  .header .btn-getstarted {
+    order: 3;
     margin: 0 15px 0 0;
     padding: 6px 15px;
   }
 
   .header .navmenu {
-    order: 3;
+    order: 4;
   }
 }
 
@@ -209,6 +257,14 @@ h6 {
   .header .logo img {
     max-height: 50px;
   }
+
+  .header .theme-toggle {
+    width: 34px;
+    height: 34px;
+    margin: 0 8px;
+    font-size: 15px;
+  }
+
   .header .btn-getstarted {
     padding: 5px 12px;
     font-size: 12px;
@@ -232,8 +288,14 @@ h6 {
   --background-color: rgba(20, 20, 20, 0.8);
 }
 
+:root[data-theme="light"] .scrolled .header {
+  --background-color: rgba(255, 255, 255, 0.85);
+}
+
 /* Index Page Header
 ------------------------------*/
+/* The index-page header floats transparently over the hero, which now
+follows the site theme, so nav text just inherits the theme's --nav-color. */
 .index-page .header {
   --background-color: rgba(255, 255, 255, 0);
 }
@@ -242,6 +304,11 @@ h6 {
 ------------------------------*/
 .index-page.scrolled .header {
   --background-color: rgba(20, 20, 20, 0.8);
+}
+
+:root[data-theme="light"] .index-page.scrolled .header {
+  --background-color: rgba(255, 255, 255, 0.85);
+  --nav-color: #3c3c3c;
 }
 
 /*--------------------------------------------------------------
@@ -805,19 +872,120 @@ section,
   padding-bottom: 80px;
 }
 
-.hero img {
+.hero-bg-animation {
   position: absolute;
   inset: 0;
-  display: block;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(160deg, #141414 0%, #1e1e1e 55%, #2a1010 100%);
+}
+
+:root[data-theme="light"] .hero-bg-animation {
+  background: linear-gradient(160deg, #ffffff 0%, #f2f2f4 55%, #fbe9e9 100%);
+}
+
+.hero-bg-animation .hero-canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: 1;
+  display: block;
+}
+
+.hero-bg-animation .code-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--default-color), transparent 88%) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--default-color), transparent 88%) 1px, transparent 1px);
+  background-size: 42px 42px;
+  animation: hero-grid-drift 30s linear infinite;
+}
+
+.hero-bg-animation .hero-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg-animation .hero-fade-bottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, var(--background-color) 100%);
+  pointer-events: none;
+}
+
+.hero-bg-animation .code-particle {
+  position: absolute;
+  left: var(--x, 50%);
+  bottom: -10%;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: var(--size, 20px);
+  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  white-space: nowrap;
+  user-select: none;
+  filter: blur(var(--blur, 0px));
+  animation: hero-float-up var(--duration, 16s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.hero-bg-animation .code-particle.accent {
+  color: color-mix(in srgb, var(--accent-color), transparent 10%);
+}
+
+.hero-bg-animation .code-particle.icon {
+  font-family: inherit;
+  line-height: 1;
+}
+
+@keyframes hero-float-up {
+  0% {
+    transform: translateY(20vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-50vh) translateX(12px) rotate(4deg);
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-120vh) translateX(-8px) rotate(-3deg);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 42px 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-animation .code-particle {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .hero-bg-animation .code-grid {
+    animation: none;
+  }
 }
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  background: color-mix(in srgb, var(--background-color), transparent 60%);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -1734,6 +1902,7 @@ section,
 # Services Section
 --------------------------------------------------------------*/
 .services .service-item {
+  display: block;
   background: var(--surface-color);
   border: 2px solid color-mix(in srgb, var(--default-color), transparent 90%);
   border-radius: 16px;

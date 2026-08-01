@@ -4,6 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <title>SEO Services - Haseeb Naqash</title>
   <meta name="description" content="Comprehensive SEO strategies to improve rankings and drive organic traffic to your site.">
   <meta name="keywords" content="SEO, Search Engine Optimization, On-page SEO, Off-page SEO, Organic Traffic, Keyword Research">
@@ -47,6 +54,11 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <i class="bi bi-sun-fill theme-icon-light"></i>
+        <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+      </button>
 
       <a class="btn-getstarted" href="https://wa.me/923216704217">Get Started</a>
 

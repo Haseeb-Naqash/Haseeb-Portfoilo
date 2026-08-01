@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="meezabBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c3f66"/>
+      <stop offset="100%" stop-color="#12294a"/>
+    </linearGradient>
+    <linearGradient id="meezabAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff9d4d"/>
+      <stop offset="100%" stop-color="#ff6a3d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#meezabBg)"/>
+
+  <g opacity="0.15">
+    <circle cx="660" cy="120" r="160" fill="#ffffff"/>
+    <circle cx="90" cy="500" r="130" fill="#ffffff"/>
+  </g>
+
+  <!-- graduation cap icon -->
+  <g transform="translate(400,235)">
+    <polygon points="0,-46 100,-6 0,34 -100,-6" fill="url(#meezabAccent)"/>
+    <polygon points="0,-46 100,-6 0,34 -100,-6" fill="none" stroke="#12294a" stroke-width="2"/>
+    <rect x="-46" y="-6" width="92" height="46" rx="6" fill="#0f2440"/>
+    <line x1="86" y1="-6" x2="86" y2="46" stroke="#ffcf9f" stroke-width="3"/>
+    <circle cx="86" cy="52" r="6" fill="#ffcf9f"/>
+  </g>
+
+  <text x="400" y="365" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="46" letter-spacing="1" fill="#ffffff">MEEZAB EDUCATION</text>
+  <text x="400" y="398" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" letter-spacing="4" fill="#ff9d4d">ACADEMIC CONSULTANCY</text>
+
+  <line x1="330" y1="425" x2="470" y2="425" stroke="#ff9d4d" stroke-width="1"/>
+
+  <text x="400" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" letter-spacing="1" fill="#c9d7ea">Brand Identity &#8226; Social Media Creatives</text>
+</svg>
